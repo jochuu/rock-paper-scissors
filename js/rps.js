@@ -6,8 +6,9 @@ function computerSelection() {
     return selection[Math.floor(Math.random()*selection.length)];
 }
 
-function playerSelection() {
-    return selection[0];
+function playerSelection(input) {
+    playRound(computerSelection(), input);
+    console.log(`Player Score: ${playerScore}, Computer Score: ${computerScore}`);
 }
 
 function playRound(computer, player) {
@@ -27,33 +28,10 @@ function playRound(computer, player) {
         }
     }
 
-function playerSelection() {
-    let input = '';
-    do {
-        let input = prompt('Pick Rock, Paper or Scissors').toLowerCase();
-        if(checkPromptInput(input)) {
-            return input;
-        };
-    } while(!checkPromptInput(input));
-}
 
-function checkPromptInput(selection) {
-    switch(selection) {
-    case 'rock':
-        return true;
-    case 'paper':
-        return true;
-    case 'scissors':
-        return true;
-        default: 
-    return false;
-    }
-}
-
-(function() {
-    for (let i = 0; i < 5; i++) {
-    playRound(computerSelection(), playerSelection());
-}
-console.log(`Player Score: ${playerScore}, Computer Score: ${computerScore}`);
-})();
+// (function() {
+//     for (let i = 0; i < 5; i++) {
+//     playRound(computerSelection(), playerSelection());
+// }
+// })();
 
