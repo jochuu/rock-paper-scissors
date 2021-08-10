@@ -6,18 +6,18 @@
   </head>
   <body class='flex-grid'>
     <div class='col'>
-    <h1>Rock Paper Scissors - first to 5 wins!</h1>
+    <h1 class=>Rock Paper Scissors - first to 5 wins!</h1>
 
     <div class="button-container">
-      <button class='rps-btn' id="rockBtn" value="rock" >
+      <button class='rps-btn random-colour' id="rockBtn" value="rock" >
         Rock
       </button>
-      <button class='rps-btn' id="paperBtn" value="paper" >
+      <button class='rps-btn random-colour' id="paperBtn" value="paper" >
         Paper
       </button>
       <button
         id="scissorsBtn"
-        class='rps-btn'
+        class='rps-btn random-colour'
         value="scissors"
         
       >
@@ -28,12 +28,11 @@
     <div class='col'>
       <h1>Current:</h1>
       <div class="score-container">
-        <div id="currentRound"></div>
-        <div id="outcome"></div>
-        <div>You:</div>
-        <div id="playerScore" class="score">0</div>
-        <div>Computer:</div>
-        <div id="computerScore" class="score">0</div>
+        <div class='game-info' id="roundNumber"></div>
+        <div class='game-info' id="currentRound"></div>
+        <div class='game-info' id="outcome"></div>
+        <div class='game-info' id="playerScore" class="score"></div>
+        <div class='game-info' id="computerScore" class="score"></div>
       </div>
   </div>
     <div class='col'>

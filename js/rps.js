@@ -4,9 +4,10 @@ let computerScore = 0;
 let playerScore = 0;
 let roundNumber = 0;
 let history = [];
+let hue = 0;
+
 
 const rpsButtons = document.querySelectorAll('.rps-btn');
-
 
 function computerSelection() {
     return selection[Math.floor(Math.random()*selection.length)];
@@ -23,8 +24,7 @@ function checkFirstToFive() {
 function startGame() {
     rpsButtons.forEach((choice) => {
       choice.addEventListener('click', function() {
-        // round++;
-        // round =+ round;
+        roundNumber++;
         let player;
 
         if (choice.id === 'rockBtn') {
@@ -39,6 +39,8 @@ function startGame() {
             let currentChoice = `Player chose: ${upperFirstLetter(player)},  Computer chose: ${upperFirstLetter(computer)}`;
             let result = playRound(computer, player);
             updatePage(computerScore, playerScore, result, currentChoice);
+            generateRandomColour();
+            console.log(hue);
         };
       });
     });
@@ -62,8 +64,9 @@ function playRound(computer, player) {
 
 function updatePage(computer, player, result, currentChoice) {
 
-    document.querySelector('#computerScore').textContent = computer;
-    document.querySelector('#playerScore').textContent = player;
+    document.querySelector('#computerScore').textContent =`Computer :  ${computer}`;
+    document.querySelector('#playerScore').textContent = `You : ${player}`;
+    document.querySelector('#roundNumber').textContent = `Round ${roundNumber}`;
 
     history.unshift(createHistoryElement(currentChoice, result));
 
@@ -81,20 +84,20 @@ function updatePage(computer, player, result, currentChoice) {
 }
 
 function createHistoryElement(currentChoice, result) {
+    
     const paragraph = document.createElement('p');
-    paragraph.textContent = currentChoice;
-    console.log(result);
+    paragraph.textContent = `Round ${roundNumber}| ${currentChoice} [${result}]`;
+
     if(result === outcome[2]) {// TIE
         paragraph.classList.add('tie-colour');
-        console.log('1');
         return paragraph;
+
     } else if (result === outcome[1]) { // COMPUTER WINS
         paragraph.classList.add('computer-win-colour');
-        console.log('2');
         return paragraph;
+
     } else { // PLAYER WINS
         paragraph.classList.add('player-win-colour');
-        console.log('3');
         return paragraph;
     }
     }
@@ -106,10 +109,22 @@ function upperFirstLetter(text) {
 function resetGame() {
     computerScore = 0;
     playerScore = 0;
+    roundNumber = 0;
     document.querySelector('#previousRound').textContent = "";
-    document.querySelector('#computerScore').textContent = '0';
-    document.querySelector('#playerScore').textContent = '0';
+    document.querySelector('#computerScore').textContent = '';
+    document.querySelector('#playerScore').textContent = '';
+    document.querySelector('#roundNumber').textContent = '';
     document.querySelector('#outcome').textContent = 'Game Reset!';
+    document.querySelectorAll('.random-colour').forEach(function(component) {
+        component.style.color = '';
+    });
+}
+
+function generateRandomColour() {
+    document.querySelectorAll('.random-colour').forEach(function(component) {
+        component.style.color = `hsla(${hue}, 75%, 50%, 1)`;
+        hue += 222.5;
+    });
 }
 
 startGame();
