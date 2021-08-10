@@ -1,0 +1,54 @@
+html,
+body {
+  font-family: arial, sans-serif;
+  font-size: 14px;
+  width: 100%;
+  height: 100%;
+}
+
+h1 {
+  font-size: x-large;
+  padding-bottom: 35px;
+  display: flex;
+  justify-content: center;
+}
+
+.flex-grid {
+  display: flex;
+}
+
+.col {
+  flex: 1;
+}
+
+.button-container {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.score-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 2;
+  justify-content: center;
+  align-items: center;
+}
+
+.player-win-colour {
+  color: green;
+}
+
+.computer-win-colour {
+  color: red;
+}
+
+.tie-colour {
+  color: orange;
+}
+
+#outcome {
+  font-size: larger;
+  padding: 5px 0 5px 0;
+}

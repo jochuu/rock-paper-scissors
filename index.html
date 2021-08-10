@@ -1,33 +1,47 @@
 <html>
   <head>
     <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="css/reset.css"></link>
+    <link rel="stylesheet" href="css/main.css"></link>
   </head>
-  <body>
+  <body class='flex-grid'>
+    <div class='col'>
     <h1>Rock Paper Scissors - first to 5 wins!</h1>
-    <div class="score-container">
-      <div id="previousRound">placeholder</div>
-      <div id="currentRound"></div>
-      <div id="outcome"></div>
-      <div>You:</div>
-      <div id="playerScore" class="score">0</div>
-      <div>Computer:</div>
-      <div id="computerScore" class="score">0</div>
-    </div>
+
     <div class="button-container">
-      <button id="rockBtn" value="rock" onclick="playerSelection(value)">
+      <button class='rps-btn' id="rockBtn" value="rock" >
         Rock
       </button>
-      <button id="paperBtn" value="paper" onclick="playerSelection(value)">
+      <button class='rps-btn' id="paperBtn" value="paper" >
         Paper
       </button>
       <button
         id="scissorsBtn"
+        class='rps-btn'
         value="scissors"
-        onclick="playerSelection(value)"
+        
       >
         Scissors
       </button>
     </div>
+    </div>
+    <div class='col'>
+      <h1>Current:</h1>
+      <div class="score-container">
+        <div id="currentRound"></div>
+        <div id="outcome"></div>
+        <div>You:</div>
+        <div id="playerScore" class="score">0</div>
+        <div>Computer:</div>
+        <div id="computerScore" class="score">0</div>
+      </div>
+  </div>
+    <div class='col'>
+      <h1>Game History</h1>
+      <div id="previousRound"></div>
+  </div>
+    </div>
+ 
   </body>
   <script src="js/rps.js"></script>
 </html>
