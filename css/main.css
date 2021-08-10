@@ -83,13 +83,13 @@ h1 {
 #previousRound {
   display: flex;
   flex-direction: column-reverse;
-  justify-content: start;
+  justify-content: center;
 }
 
 #currentRound {
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: center;
 }
 
 .player-win-colour {
