@@ -7,6 +7,9 @@ body {
   background: #36454f;
   color: #ffffff;
 }
+@media screen and (max-width: 1000px) {
+  /* TODO */
+}
 
 h1 {
   font-size: x-large;
@@ -15,14 +18,49 @@ h1 {
   justify-content: center;
 }
 
-.flex-grid {
+.container {
   display: flex;
+  flex-flow: column wrap;
+  flex-grow: 1;
+}
+
+.row {
+  justify-content: center;
+  display: flex;
+  flex-flow: row wrap;
+  flex-grow: 1;
 }
 
 .col {
-  flex: 1;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
 }
 
+.button {
+  padding-bottom: 20px;
+}
+
+.round {
+  padding-bottom: 15px;
+  font-weight: 600;
+  font-size: larger;
+}
+
+.score {
+  padding-right: 5px;
+  padding-bottom: 15px;
+}
+
+.main-game {
+  justify-content: space-around;
+  height: 30vh;
+}
+
+.footer {
+  padding-top: 50px;
+  flex-shrink: 1;
+}
 .rps-btn {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -42,19 +80,16 @@ h1 {
   font-weight: 600;
 }
 
-.button-container {
-  margin: auto;
+#previousRound {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column-reverse;
+  justify-content: start;
 }
 
-.score-container {
+#currentRound {
   display: flex;
   flex-direction: column;
-  flex-grow: 2;
-  justify-content: center;
-  align-items: center;
+  justify-content: start;
 }
 
 .player-win-colour {

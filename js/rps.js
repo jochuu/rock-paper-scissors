@@ -36,11 +36,9 @@ function startGame() {
         }
         if(checkFirstToFive()) {
             let computer = computerSelection();
-            let currentChoice = `Player chose: ${upperFirstLetter(player)},  Computer chose: ${upperFirstLetter(computer)}`;
             let result = playRound(computer, player);
-            updatePage(computerScore, playerScore, result, currentChoice);
+            updatePage(computer, player, computerScore, playerScore, result);
             generateRandomColour();
-            console.log(hue);
         };
       });
     });
@@ -62,31 +60,31 @@ function playRound(computer, player) {
             }
 }
 
-function updatePage(computer, player, result, currentChoice) {
+function updatePage(computerChoice, playerChoice, computerScore, playerScore, result) {
 
-    document.querySelector('#computerScore').textContent =`Computer :  ${computer}`;
-    document.querySelector('#playerScore').textContent = `You : ${player}`;
+    document.querySelector('#computerScore').textContent =`Computer :  ${computerScore}`;
+    document.querySelector('#playerScore').textContent = `You : ${playerScore}`;
     document.querySelector('#roundNumber').textContent = `Round ${roundNumber}`;
+    document.querySelector('#currentRound').textContent = `Player chose: ${upperFirstLetter(playerChoice)},  Computer chose: ${upperFirstLetter(computerChoice)}`;
 
-    history.unshift(createHistoryElement(currentChoice, result));
-
-    const outcomeSpan = document.createElement("p");
-    outcomeSpan.textContent = result;
-    
+    history.unshift(createHistoryElement(computerChoice, playerChoice, result));
     document.querySelector('#previousRound').append(history[0]) ;
-    document.querySelector('#currentRound').textContent = currentChoice;
 
-    if (computerScore === 5 || playerScore === 5) {
-        document.querySelector('#outcome').textContent = 'Game Over! Click any button to reset.';
-    } else {
+    if (computerScore === 5) {
+        document.querySelector('#outcome').textContent = 'You lose! Click any button to reset.';
+    } 
+    else if (playerScore === 5){
+        document.querySelector('#outcome').textContent = 'You win! Click any button to reset.';
+    } 
+    else {
         document.querySelector('#outcome').textContent = result;
     }
 }
 
-function createHistoryElement(currentChoice, result) {
+function createHistoryElement(computerChoice, playerChoice, result) {
     
     const paragraph = document.createElement('p');
-    paragraph.textContent = `Round ${roundNumber}| ${currentChoice} [${result}]`;
+    paragraph.textContent = `Round ${roundNumber} ${upperFirstLetter(playerChoice)} vs ${upperFirstLetter(computerChoice)} [${result}]`;
 
     if(result === outcome[2]) {// TIE
         paragraph.classList.add('tie-colour');
@@ -114,6 +112,7 @@ function resetGame() {
     document.querySelector('#computerScore').textContent = '';
     document.querySelector('#playerScore').textContent = '';
     document.querySelector('#roundNumber').textContent = '';
+    document.querySelector('#currentRound').textContent = '';
     document.querySelector('#outcome').textContent = 'Game Reset!';
     document.querySelectorAll('.random-colour').forEach(function(component) {
         component.style.color = '';
