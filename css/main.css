@@ -53,8 +53,9 @@ h1 {
 }
 
 .main-game {
-  justify-content: space-around;
-  height: 30vh;
+  justify-content: space-between;
+  height: 20vh;
+  padding: 0 10vw 10vw 10vw;
 }
 
 .footer {
@@ -90,6 +91,8 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  padding-bottom: 15px;
 }
 
 .player-win-colour {
